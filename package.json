@@ -1,0 +1,22 @@
+{
+    "name": "isofocus",
+    "version": "1.2.0",
+    "description": "API use to isofocus",
+    "main": "app.js",
+    "scripts": {
+        "start": "\"npm run tsc:watch\"",
+        "tsc": "tsc",
+        "tsc:watch": "tsc -w"
+    },
+    "author": "Miguel Moya Ortega",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/miguelmoya1/miguelmoya1.github.io"
+    },
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+        "concurrently": "~3.5.1",
+        "nodemon": "~1.15.0"
+    }
+}
