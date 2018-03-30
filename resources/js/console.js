@@ -3,19 +3,21 @@ firstText = 'Miguelmo@home:~$ ', actualParagraph, actualInput, textToWrite, inde
 let newLine = (contenteditable = false) => {
     let divContainer = document.createElement('div');
     let newP = document.createElement('p');
-    let initial = document.createElement('span');
     divContainer.className = 'line';
-    initial.textContent = firstText;
-    divContainer.appendChild(initial);
+    if (contenteditable) {
+        let initial = document.createElement('span');
+        initial.textContent = firstText;
+        divContainer.appendChild(initial);
+        newP.setAttribute('contenteditable', '');
+        newP.setAttribute('autofocus', '');
+    }
+    else {
+        newP.textContent = firstText;
+    }
     divContainer.appendChild(newP);
     divConsole.appendChild(divContainer);
-    setScroll();
-    if (contenteditable)
-        newP.setAttribute('contenteditable', '');
-    if (contenteditable)
-        newP.setAttribute('autofocus', '');
     actualParagraph = newP;
-    return newP;
+    setScroll();
 };
 let writeText = (text, link = false, time) => {
     textToWrite = text;
@@ -30,7 +32,7 @@ let writeText = (text, link = false, time) => {
         }
         setTimeout(() => {
             if (link) {
-                actualParagraph.textContent = '';
+                actualParagraph.textContent = firstText + '';
                 let textArray = text.split(' ');
                 textArray.forEach(link => {
                     let a = document.createElement('a');
