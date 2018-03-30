@@ -19,6 +19,7 @@ let writeText = (text, time) => {
             setTimeout(() => {
                 actualParagraph.textContent += textToWrite[index];
                 index++;
+                divConsole.scrollTop = divConsole.scrollHeight;
             }, i * milliseconds);
         }
         setTimeout(() => {
@@ -28,11 +29,14 @@ let writeText = (text, time) => {
     });
     return promise;
 };
+let setScroll = () => {
+    divConsole.scrollTop = divConsole.scrollHeight;
+};
 //LÓGICA DEL CODIGO
 newLine();
 writeText('Bienvenid@ a mi web').then(() => {
     newLine();
-    writeText('Datos:').then(() => {
+    writeText('Datos personales:').then(() => {
         newLine();
         writeText('Sant Vicent del Raspeig, Comunidad Valenciana, España.', 30).then(() => {
             newLine();
@@ -48,58 +52,3 @@ writeText('Bienvenid@ a mi web').then(() => {
         });
     });
 });
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
-newLine();
