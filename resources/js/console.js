@@ -4,6 +4,7 @@ let newLine = () => {
     let newSpan = document.createElement('p');
     newSpan.textContent = firstText || '';
     divConsole.appendChild(newSpan);
+    divConsole.scrollTop = divConsole.scrollHeight;
     actualParagraph = newSpan;
     return newSpan;
 };
@@ -12,7 +13,8 @@ let writeText = (text, time) => {
     if (text.includes('@')) {
     }
     let promise = new Promise(resolve => {
-        let i, milliseconds = time || 50;
+        // incrementScroll();
+        let i, milliseconds = time || 10;
         for (i = 0; i < textToWrite.length; i++) {
             setTimeout(() => {
                 actualParagraph.textContent += textToWrite[index];
@@ -46,3 +48,58 @@ writeText('Bienvenid@ a mi web').then(() => {
         });
     });
 });
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
+newLine();
