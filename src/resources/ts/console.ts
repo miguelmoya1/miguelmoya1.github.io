@@ -15,7 +15,7 @@ let newLine = () => {
 let writeText = (text: string, link = false, time?: number) => {
     textToWrite = text;
     let promise = new Promise(resolve => {
-        let i, milliseconds = time || 10;
+        let i, milliseconds = time || 50;
         for (i = 0; i < textToWrite.length; i++) {
             setTimeout(() => {
                 actualParagraph.textContent += textToWrite[index];
