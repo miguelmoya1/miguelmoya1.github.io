@@ -1,0 +1,1 @@
+span{font-family:monospace;font-size:2em}span:after{content:"_";opacity:0;-webkit-animation:cursor 1s infinite;animation:cursor 1s infinite}@-webkit-keyframes cursor{0%,100%,40%{opacity:0}50%,90%{opacity:1}}@keyframes cursor{0%,100%,40%{opacity:0}50%,90%{opacity:1}}
