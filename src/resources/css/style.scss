@@ -25,17 +25,24 @@ body {
                 height: inherit;
                 overflow-y: auto;
                 overflow-x: hidden;
-                p {
-                    font-family: monospace;
-                    font-size: 1em;
-                    display: block;
-                    margin: 0 !important;
-                    a {
-                        text-decoration: none;
-                        color: dodgerblue;
+                .line {
+                    display: flex;
+                    flex-direction: row;
+                    span {
+                        margin-right: .5rem;
+                    }
+                    p {
+                        font-family: monospace;
+                        font-size: 1em;
+                        display: block;
+                        margin: 0 !important;
+                        a {
+                            text-decoration: none;
+                            color: dodgerblue;
+                        }
                     }
                 }
-                p:last-child:after {
+                .line:last-child>p:last-child:after {
                     content: "_";
                     opacity: 0;
                     animation: cursor 1s infinite;

@@ -1,15 +1,26 @@
 let divConsole = document.getElementById('console'),        // Elemento de la consola
     firstText = 'Miguelmo@home:~$ ',
     actualParagraph: HTMLParagraphElement,
+    actualInput: HTMLInputElement,
     textToWrite: string, index = 0;
 
-let newLine = () => {
-    let newSpan = document.createElement('p');
-    newSpan.textContent = firstText || '';
-    divConsole.appendChild(newSpan);
+let newLine = (contenteditable = false) => {
+    let divContainer = document.createElement('div');
+    let newP = document.createElement('p');
+    let initial = document.createElement('span');
+
+    divContainer.className = 'line';
+    initial.textContent = firstText;
+
+    divContainer.appendChild(initial);
+    divContainer.appendChild(newP);
+    divConsole.appendChild(divContainer);
     setScroll();
-    actualParagraph = newSpan;
-    return newSpan;
+
+    if (contenteditable) newP.setAttribute('contenteditable', '');
+    if (contenteditable) newP.setAttribute('autofocus', '');
+    actualParagraph = newP;
+    return newP;
 };
 
 let writeText = (text: string, link = false, time?: number) => {
@@ -25,7 +36,7 @@ let writeText = (text: string, link = false, time?: number) => {
         }
         setTimeout(() => {
             if (link) {
-                actualParagraph.textContent = firstText;
+                actualParagraph.textContent = '';
                 let textArray = text.split(' ');
                 textArray.forEach(link => {
                     let a = document.createElement('a');
@@ -61,7 +72,7 @@ writeText('Bienvenid@ a mi web').then(() => {
             writeText('miguelmoyaortega@hotmail.com', true, 30).then(() => {
                 newLine();
                 writeText('github.com/miguelmoya1 isofocus.es', true, 30).then(() => {
-                    newLine();
+                    newLine(true);
                 });
             });
         });
