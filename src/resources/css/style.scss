@@ -1,14 +1,33 @@
 // out: ../../../resources/css/style.css, compress: true, sourceMap: false, autoprefixer: last 5 versions, groupmedia: true
-div#console {
-    span {
-        font-family: monospace;
-        font-size: 1em;
-        display: block;
-    }
-    span:last-child:after {
-        content: "_";
-        opacity: 0;
-        animation: cursor 1s infinite;
+body {
+    background: url('../img/background.jpg');
+    .container {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        .console {
+            width: 80%;
+            height: 70vh;
+            background-color: black;
+            opacity: .5;
+            border: solid 2px gray;
+            padding: .3rem;
+            div#console {
+                p {
+                    font-family: monospace;
+                    font-size: 1em;
+                    display: block;
+                    margin: 0 !important;
+                }
+                p:last-child:after {
+                    content: "_";
+                    opacity: 0;
+                    animation: cursor 1s infinite;
+                }
+            }
+        }
     }
 }
 

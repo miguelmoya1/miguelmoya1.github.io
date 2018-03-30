@@ -1,19 +1,21 @@
 let divConsole = document.getElementById('console'), // Elemento de la consola
-firstText = 'Miguelmo@home:~$ ', actualSpan, textToWrite, index = 0;
+firstText = 'Miguelmo@home:~$ ', actualParagraph, textToWrite, index = 0;
 let newLine = () => {
-    let newSpan = document.createElement('span');
+    let newSpan = document.createElement('p');
     newSpan.textContent = firstText || '';
     divConsole.appendChild(newSpan);
-    actualSpan = newSpan;
+    actualParagraph = newSpan;
     return newSpan;
 };
 let writeText = (text, time) => {
     textToWrite = text;
+    if (text.includes('@')) {
+    }
     let promise = new Promise(resolve => {
         let i, milliseconds = time || 50;
         for (i = 0; i < textToWrite.length; i++) {
             setTimeout(() => {
-                actualSpan.textContent += textToWrite[index];
+                actualParagraph.textContent += textToWrite[index];
                 index++;
             }, i * milliseconds);
         }
