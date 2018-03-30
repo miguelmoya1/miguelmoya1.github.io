@@ -28,18 +28,22 @@ body {
                 .line {
                     display: flex;
                     flex-direction: row;
+                    font-family: monospace;
+                    font-size: 1em;
                     span {
                         margin-right: .5rem;
                     }
                     p {
-                        font-family: monospace;
-                        font-size: 1em;
                         display: block;
                         margin: 0 !important;
                         a {
                             text-decoration: none;
                             color: dodgerblue;
                         }
+                    }
+                    p:active,
+                    p:focus {
+                        outline: none;
                     }
                 }
                 .line:last-child>p:last-child:after {

@@ -13,7 +13,6 @@ let newLine = (contenteditable = false) => {
         initial.textContent = firstText;
         divContainer.appendChild(initial);
         newP.setAttribute('contenteditable', '');
-        newP.setAttribute('autofocus', '');
     } else {
         newP.textContent = firstText;
     }
