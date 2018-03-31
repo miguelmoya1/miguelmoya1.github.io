@@ -56,6 +56,10 @@ let analiceText = () => {
         newLine();
         writeText('Comandos disponibles: contacto, proyectos, info', 20).then(() => newLine(true));
     }
+    else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'exit') {
+        window.open('', '_self', '');
+        window.close();
+    }
     else {
         newLine();
         writeText('Commando no encontrado...', 20).then(() => newLine(true));
