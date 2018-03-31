@@ -1,24 +1,67 @@
-let divConsole = document.getElementById('console'), // Elemento de la consola
-firstText = 'Miguelmo@home:~$ ', actualParagraph, actualInput, textToWrite, index = 0;
-let newLine = (contenteditable = false) => {
+let divConsole = document.getElementById('console'), firstText = 'Miguelmo@home:~$ ', actualParagraph, textToWrite, index = 0;
+divConsole.addEventListener('click', () => {
+    if (actualParagraph)
+        actualParagraph.focus();
+});
+let newLine = (contenteditable = false, initial = true) => {
     let divContainer = document.createElement('div');
     let newP = document.createElement('p');
     divContainer.className = 'line';
+    actualParagraph = newP;
     if (contenteditable) {
         let initial = document.createElement('span');
-        initial.textContent = firstText;
+        initial.textContent = initial ? firstText : '';
         divContainer.appendChild(initial);
         newP.setAttribute('contenteditable', '');
+        newP.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.keyCode === 13)
+                analiceText();
+        });
     }
-    else {
-        newP.textContent = firstText;
-    }
+    else
+        newP.textContent = initial ? firstText : '';
     divContainer.appendChild(newP);
     divConsole.appendChild(divContainer);
-    actualParagraph = newP;
     setScroll();
+    if (contenteditable)
+        actualParagraph.focus();
 };
-let writeText = (text, link = false, time) => {
+let analiceText = () => {
+    actualParagraph.removeAttribute('contenteditable');
+    if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'contacto' ||
+        actualParagraph.textContent.trim().toLocaleLowerCase() === 'contactos' ||
+        actualParagraph.textContent.trim().toLocaleLowerCase() === 'contactar') {
+        newLine(false, false);
+        writeText('miguelmoyaortega@gmail.com', 10, true).then(() => newLine(true));
+    }
+    else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'info' ||
+        actualParagraph.textContent.trim().toLocaleLowerCase() === 'informacion') {
+        newLine(false, false);
+        writeText('Nombre: Miguel Moya Ortega', 10).then(() => {
+            newLine(false, false);
+            writeText('Sant Vicent del Raspeig, Comunidad Valenciana, España', 10).then(() => {
+                newLine(false, false);
+                writeText('Desarrollador web en Bitapp', 10).then(() => {
+                    newLine(true);
+                });
+            });
+        });
+    }
+    else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'proyectos' ||
+        actualParagraph.textContent.trim().toLocaleLowerCase() === 'proyecto') {
+        newLine(false, false);
+        writeText('https://isofocus.es/', 20).then(() => newLine(true));
+    }
+    else if (actualParagraph.textContent.trim().toLocaleLowerCase() === '/help') {
+        newLine();
+        writeText('Comandos disponibles: contacto, proyectos, info', 20).then(() => newLine(true));
+    }
+    else {
+        newLine();
+        writeText('Commando no encontrado...', 20).then(() => newLine(true));
+    }
+};
+let writeText = (text, time, link = false) => {
     textToWrite = text;
     let promise = new Promise(resolve => {
         let i, milliseconds = time || 50;
@@ -31,7 +74,7 @@ let writeText = (text, link = false, time) => {
         }
         setTimeout(() => {
             if (link) {
-                actualParagraph.textContent = firstText + '';
+                actualParagraph.textContent = '';
                 let textArray = text.split(' ');
                 textArray.forEach(link => {
                     let a = document.createElement('a');
@@ -56,20 +99,10 @@ let writeText = (text, link = false, time) => {
 let setScroll = () => {
     divConsole.scrollTop = divConsole.scrollHeight;
 };
-//LÓGICA DEL CODIGO
 newLine();
-writeText('Bienvenid@ a mi web').then(() => {
+writeText('Bienvenid@').then(() => {
     newLine();
-    writeText('Datos personales:').then(() => {
-        newLine();
-        writeText('Sant Vicent del Raspeig, Comunidad Valenciana, España.', false, 30).then(() => {
-            newLine();
-            writeText('miguelmoyaortega@hotmail.com', true, 30).then(() => {
-                newLine();
-                writeText('github.com/miguelmoya1 isofocus.es', true, 30).then(() => {
-                    newLine(true);
-                });
-            });
-        });
+    writeText('Escribe el comando o /help para ver la lista de comandos posibles.', 30).then(() => {
+        newLine(true);
     });
 });

@@ -19,9 +19,9 @@ body {
             }
             #console {
                 top: 9.75rem;
-                padding-left: .3rem;
+                padding: 0 .5rem;
                 position: absolute;
-                width: inherit;
+                width: 79%;
                 height: inherit;
                 overflow-y: auto;
                 overflow-x: hidden;
@@ -34,8 +34,9 @@ body {
                         margin-right: .5rem;
                     }
                     p {
-                        display: block;
+                        display: inherit;
                         margin: 0 !important;
+                        caret-color: auto;
                         a {
                             text-decoration: none;
                             color: dodgerblue;
@@ -86,4 +87,22 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: .1rem;
+}
+
+@media (max-width: 1120px) {
+    body .container .console-container #console {
+        width: inherit;
+    }
+}
+
+@media (max-width: 800px) {
+    body .container .console-container #console {
+        width: 78%;
+    }
+}
+
+@media (max-width: 500px) {
+    body .container .console-container #console {
+        width: 75%;
+    }
 }
