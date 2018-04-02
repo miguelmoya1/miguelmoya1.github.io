@@ -1,4 +1,6 @@
-let divConsole = document.getElementById('console'), firstText = 'Miguelmo@home:~$ ', actualParagraph, textToWrite, index = 0;
+let divConsole = document.getElementById('console'),
+    firstText = 'Miguelmo@home:~$ ',
+    actualParagraph, textToWrite, index = 0;
 divConsole.addEventListener('click', () => {
     if (actualParagraph)
         actualParagraph.focus();
@@ -14,11 +16,9 @@ let newLine = (contenteditable = false, initial = true) => {
         divContainer.appendChild(initial);
         newP.setAttribute('contenteditable', '');
         newP.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.keyCode === 13)
-                analiceText();
+            if (e.key === 'Enter' || e.keyCode === 13) analiceText();
         });
-    }
-    else
+    } else
         newP.textContent = initial ? firstText : '';
     divContainer.appendChild(newP);
     divConsole.appendChild(divContainer);
@@ -33,8 +33,7 @@ let analiceText = () => {
         actualParagraph.textContent.trim().toLocaleLowerCase() === 'contactar') {
         newLine(false, false);
         writeText('miguelmoyaortega@gmail.com', 10, true).then(() => newLine(true));
-    }
-    else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'info' ||
+    } else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'info' ||
         actualParagraph.textContent.trim().toLocaleLowerCase() === 'informacion') {
         newLine(false, false);
         writeText('Nombre: Miguel Moya Ortega', 10).then(() => {
@@ -46,23 +45,19 @@ let analiceText = () => {
                 });
             });
         });
-    }
-    else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'proyectos' ||
+    } else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'proyectos' ||
         actualParagraph.textContent.trim().toLocaleLowerCase() === 'proyecto') {
         newLine(false, false);
         writeText('https://isofocus.es/', 20).then(() => newLine(true));
-    }
-    else if (actualParagraph.textContent.trim().toLocaleLowerCase() === '/help') {
+    } else if (actualParagraph.textContent.trim().toLocaleLowerCase() === '/help') {
         newLine();
         writeText('Comandos disponibles: contacto, proyectos, info', 20).then(() => newLine(true));
-    }
-    else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'exit') {
+    } else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'exit') {
         window.open('', '_self', '');
         window.close();
-    }
-    else {
+    } else {
         newLine();
-        writeText('Commando no encontrado...', 20).then(() => newLine(true));
+        writeText('Commando no encontrado... ', 20).then(() => newLine(true));
     }
 };
 let writeText = (text, time, link = false) => {
@@ -106,7 +101,7 @@ let setScroll = () => {
 newLine();
 writeText('Bienvenid@').then(() => {
     newLine();
-    writeText('Escribe el comando o /help para ver la lista de comandos posibles.', 30).then(() => {
+    writeText('Escribe el comando o /help para ver la lista de comandos posibles. ', 30).then(() => {
         newLine(true);
     });
 });

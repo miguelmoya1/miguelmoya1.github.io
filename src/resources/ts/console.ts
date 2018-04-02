@@ -104,7 +104,5 @@ let setScroll = () => {
 newLine();
 writeText('Bienvenid@').then(() => {
     newLine();
-    writeText('Escribe el comando o /help para ver la lista de comandos posibles.', 30).then(() => {
-        newLine(true);
-    });
+    writeText('Escribe el comando o /help para ver la lista de comandos posibles.', 30).then(() => newLine(true));
 });
