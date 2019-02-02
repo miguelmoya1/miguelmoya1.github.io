@@ -14,9 +14,8 @@
         "url": "https://github.com/miguelmoya1/miguelmoya1.github.io"
     },
     "license": "ISC",
-    "dependencies": {},
     "devDependencies": {
-        "concurrently": "~3.5.1",
-        "nodemon": "~1.15.0"
+        "concurrently": "~4.1.0",
+        "nodemon": "~1.18.9"
     }
 }
