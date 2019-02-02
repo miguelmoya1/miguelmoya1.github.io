@@ -1,6 +1,12 @@
-let divConsole = document.getElementById('console'),
-    firstText = 'Miguelmo@home:~$ ',
-    actualParagraph, textToWrite, index = 0;
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+let divConsole = document.getElementById('console'), firstText = 'Miguelmo@home:~$ ', actualParagraph, textToWrite, index = 0;
 divConsole.addEventListener('click', () => {
     if (actualParagraph)
         actualParagraph.focus();
@@ -16,9 +22,11 @@ let newLine = (contenteditable = false, initial = true) => {
         divContainer.appendChild(initial);
         newP.setAttribute('contenteditable', '');
         newP.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.keyCode === 13) analiceText();
+            if (e.key === 'Enter' || e.keyCode === 13)
+                analiceText();
         });
-    } else
+    }
+    else
         newP.textContent = initial ? firstText : '';
     divContainer.appendChild(newP);
     divConsole.appendChild(divContainer);
@@ -26,40 +34,48 @@ let newLine = (contenteditable = false, initial = true) => {
     if (contenteditable)
         actualParagraph.focus();
 };
-let analiceText = () => {
+let analiceText = () => __awaiter(this, void 0, void 0, function* () {
     actualParagraph.removeAttribute('contenteditable');
-    if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'contacto' ||
-        actualParagraph.textContent.trim().toLocaleLowerCase() === 'contactos' ||
-        actualParagraph.textContent.trim().toLocaleLowerCase() === 'contactar') {
-        newLine(false, false);
-        writeText('miguelmoyaortega@gmail.com', 10, true).then(() => newLine(true));
-    } else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'info' ||
-        actualParagraph.textContent.trim().toLocaleLowerCase() === 'informacion') {
-        newLine(false, false);
-        writeText('Nombre: Miguel Moya Ortega', 10).then(() => {
+    switch (actualParagraph.textContent.trim().toLocaleLowerCase()) {
+        case 'contacto':
+        case 'contactos':
+        case 'contactar':
             newLine(false, false);
-            writeText('Sant Vicent del Raspeig, Comunidad Valenciana, España', 10).then(() => {
-                newLine(false, false);
-                writeText('Desarrollador web en Bitapp', 10).then(() => {
-                    newLine(true);
-                });
-            });
-        });
-    } else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'proyectos' ||
-        actualParagraph.textContent.trim().toLocaleLowerCase() === 'proyecto') {
-        newLine(false, false);
-        writeText('https://isofocus.es/', 20).then(() => newLine(true));
-    } else if (actualParagraph.textContent.trim().toLocaleLowerCase() === '/help') {
-        newLine();
-        writeText('Comandos disponibles: contacto, proyectos, info', 20).then(() => newLine(true));
-    } else if (actualParagraph.textContent.trim().toLocaleLowerCase() === 'exit') {
-        window.open('', '_self', '');
-        window.close();
-    } else {
-        newLine();
-        writeText('Commando no encontrado... ', 20).then(() => newLine(true));
+            yield writeText('miguelmoyaortega@gmail.com', 10, true);
+            newLine(true);
+            break;
+        case 'info':
+        case 'informacion':
+            newLine(false, false);
+            yield writeText('Nombre: Miguel Moya Ortega', 10);
+            newLine(false, false);
+            yield writeText('Sant Vicent del Raspeig, Alicante, España', 10);
+            newLine(false, false);
+            yield writeText('Desarrollador web en Bitapp', 10);
+            newLine(true);
+            break;
+        case 'proyectos':
+        case 'proyecto':
+            newLine(false, false);
+            yield writeText('https://isofocus.es/', 20);
+            newLine(true);
+            break;
+        case '/help':
+            newLine();
+            yield writeText('Comandos disponibles: contacto, proyectos, info', 20);
+            newLine(true);
+            break;
+        case 'exit':
+            window.open('', '_self', '');
+            window.close();
+            break;
+        default:
+            newLine();
+            yield writeText('Commando no encontrado...', 20);
+            newLine(true);
+            break;
     }
-};
+});
 let writeText = (text, time, link = false) => {
     textToWrite = text;
     let promise = new Promise(resolve => {
@@ -99,9 +115,8 @@ let setScroll = () => {
     divConsole.scrollTop = divConsole.scrollHeight;
 };
 newLine();
-writeText('Bienvenid@').then(() => {
+writeText('Bienvenid@').then(() => __awaiter(this, void 0, void 0, function* () {
     newLine();
-    writeText('Escribe el comando o /help para ver la lista de comandos posibles. ', 30).then(() => {
-        newLine(true);
-    });
-});
+    yield writeText('Escribe el comando o /help para ver la lista de comandos posibles.', 30);
+    newLine(true);
+}));

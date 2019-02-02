@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "target": "es2015",
+        "types": [],
         "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": false,
@@ -15,7 +16,7 @@
         "declaration": false
     },
     "include": [
-        "src/**/*"
+        "src/ts/*"
     ],
     "exclude": [
         "node_modules"
